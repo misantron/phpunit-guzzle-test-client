@@ -12,12 +12,15 @@ use GuzzleHttp\Middleware;
 
 trait RequestMapperTestClientTrait
 {
-    protected function createRequestMapperTestHttpClient(array $queue, callable $requestMapper): ClientInterface
-    {
-        return new Client($this->createTestHttpClientConfig($queue, $requestMapper));
+    protected function createRequestMapperTestHttpClient(
+        array $queue,
+        callable $requestMapper,
+        array $config = []
+    ): ClientInterface {
+        return new Client($this->createTestHttpClientConfig($queue, $requestMapper, $config));
     }
 
-    protected function createTestHttpClientConfig(array $queue, callable $requestMapper): array
+    protected function createTestHttpClientConfig(array $queue, callable $requestMapper, array $config = []): array
     {
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);
@@ -25,6 +28,6 @@ trait RequestMapperTestClientTrait
         $requestMapperMiddleware = Middleware::mapRequest($requestMapper);
         $handlerStack->push($requestMapperMiddleware);
 
-        return ['handler' => $handlerStack];
+        return array_merge($config, ['handler' => $handlerStack]);
     }
 }

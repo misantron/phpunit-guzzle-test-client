@@ -14,12 +14,12 @@ trait RequestHistoryTestClientTrait
 {
     private $requestHistory = [];
 
-    protected function createRequestHistoryTestHttpClient(array $queue): ClientInterface
+    protected function createRequestHistoryTestHttpClient(array $queue, array $config = []): ClientInterface
     {
-        return new Client($this->createTestHttpClientConfig($queue));
+        return new Client($this->createTestHttpClientConfig($queue, $config));
     }
 
-    protected function createTestHttpClientConfig(array $queue): array
+    protected function createTestHttpClientConfig(array $queue, array $config = []): array
     {
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);
@@ -28,7 +28,7 @@ trait RequestHistoryTestClientTrait
         $requestHistoryMiddleware = Middleware::history($this->requestHistory);
         $handlerStack->push($requestHistoryMiddleware);
 
-        return ['handler' => $handlerStack];
+        return array_merge($config, ['handler' => $handlerStack]);
     }
 
     protected function getRequestHistory(): array
