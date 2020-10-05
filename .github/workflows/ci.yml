@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: composer install --no-suggest --no-scripts
       - name: PHPUnit run
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --colors=always
   coverage:
     name: Tests coverage
     runs-on: ubuntu-latest
@@ -45,6 +45,12 @@ jobs:
       - name: Install dependencies
         run: composer install --no-suggest --no-scripts
       - name: PHPUnit run with coverage
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        run: vendor/bin/phpunit --colors=always --coverage-clover=coverage.xml
       - name: Upload coverage report
-        run: bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: tests
+          name: codecov-umbrella
+          yml: ./codecov.yml
