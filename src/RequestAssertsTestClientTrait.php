@@ -10,22 +10,22 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 
-trait RequestMapperTestClientTrait
+trait RequestAssertsTestClientTrait
 {
-    protected function createRequestMapperTestHttpClient(
+    public function createRequestAssertsTestHttpClient(
         array $queue,
-        callable $requestMapper,
+        callable $assertsCallback,
         array $config = []
     ): ClientInterface {
-        return new Client($this->createTestHttpClientConfig($queue, $requestMapper, $config));
+        return new Client($this->createTestHttpClientConfig($queue, $assertsCallback, $config));
     }
 
-    protected function createTestHttpClientConfig(array $queue, callable $requestMapper, array $config = []): array
+    public function createTestHttpClientConfig(array $queue, callable $assertsCallback, array $config = []): array
     {
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);
 
-        $requestMapperMiddleware = Middleware::mapRequest($requestMapper);
+        $requestMapperMiddleware = Middleware::mapRequest($assertsCallback);
         $handlerStack->push($requestMapperMiddleware);
 
         return array_merge($config, ['handler' => $handlerStack]);

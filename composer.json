@@ -1,15 +1,15 @@
 {
     "name": "misantron/phpunit-guzzle-test-client",
-    "description": "Guzzle http test client traits for PHPUnit",
+    "description": "Guzzle http test client helpers for PHPUnit",
     "type": "library",
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "guzzlehttp/guzzle": "^7.1",
-        "phpunit/phpunit": "^8.5|^9.4"
+        "guzzlehttp/guzzle": "^6.5|^7.1"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.5"
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^8.5|^9.4"
     },
     "autoload": {
         "psr-4": {
@@ -20,5 +20,11 @@
         "psr-4": {
             "PHPUnit\\Guzzle\\TestClient\\Tests\\": "tests"
         }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml"
     }
 }
