@@ -22,11 +22,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: PHP setup
-        uses: shivammathur/setup-php@v1
+      - name: PHP version setup
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          coverage: none
       - name: Install dependencies
         run: composer install --no-suggest --no-scripts
       - name: PHPUnit run
         run: vendor/bin/phpunit
+  coverage:
+    name: Tests coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: PHP setup
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: pcov
+      - name: Install dependencies
+        run: composer install --no-suggest --no-scripts
+      - name: PHPUnit run with coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: tests
+          name: codecov-umbrella
