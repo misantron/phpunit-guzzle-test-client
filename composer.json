@@ -23,5 +23,8 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml"
     }
 }
