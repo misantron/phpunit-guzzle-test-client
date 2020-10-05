@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: composer install --no-suggest --no-scripts
       - name: PHP setup
         uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php }}
+      - name: Install dependencies
+        run: composer install --no-suggest --no-scripts
       - name: PHPUnit run
         run: vendor/bin/phpunit
       - name: PHP Code Style run
