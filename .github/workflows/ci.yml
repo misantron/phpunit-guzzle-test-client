@@ -40,7 +40,7 @@ jobs:
       - name: PHP setup
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: ${{ matrix.php }}
           coverage: pcov
       - name: Install dependencies
         run: composer install --no-suggest --no-scripts
