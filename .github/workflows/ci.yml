@@ -3,6 +3,16 @@ name: CI
 on: [push]
 
 jobs:
+  code-style:
+    name: Code style
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install --no-suggest --no-scripts
+      - name: PHP Code Style run
+        run: vendor/bin/phpcs --standard=phpcs.xml
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -20,5 +30,3 @@ jobs:
         run: composer install --no-suggest --no-scripts
       - name: PHPUnit run
         run: vendor/bin/phpunit
-      - name: PHP Code Style run
-        run: vendor/bin/phpcs --standard=phpcs.xml
