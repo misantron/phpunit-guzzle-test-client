@@ -1,0 +1,24 @@
+name: CI
+
+on: [push]
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ '7.2', '7.3', '7.4' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install --no-suggest --no-scripts
+      - name: PHP setup
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+      - name: PHPUnit run
+        run: vendor/bin/phpunit
+      - name: PHP Code Style run
+        run: vendor/bin/phpcs --standard=phpcs.xml
