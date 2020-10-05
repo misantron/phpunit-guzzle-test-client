@@ -47,9 +47,4 @@ jobs:
       - name: PHPUnit run with coverage
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - name: Upload coverage report
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
-          flags: tests
-          name: codecov-umbrella
+        run: bash <(curl -s https://codecov.io/bash)
