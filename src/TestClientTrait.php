@@ -11,12 +11,12 @@ use GuzzleHttp\HandlerStack;
 
 trait TestClientTrait
 {
-    protected function createTestHttpClient(array $queue, array $config = []): ClientInterface
+    public function createTestHttpClient(array $queue, array $config = []): ClientInterface
     {
         return new Client($this->createTestHttpClientConfig($queue, $config));
     }
 
-    protected function createTestHttpClientConfig(array $queue, array $config = []): array
+    public function createTestHttpClientConfig(array $queue, array $config = []): array
     {
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);
