@@ -6,6 +6,7 @@ namespace PHPUnit\Guzzle\TestClient\Tests;
 
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\RequestOptions;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Guzzle\TestClient\RequestHistoryTestClientTrait;
 
@@ -87,5 +88,48 @@ class RequestHistoryTestClientTraitTest extends TestCase
 
         self::assertTrue($test->hasRequestHistory());
         self::assertCount(1, $test->getRequestHistory());
+    }
+
+    public function testPullRequestHistoryRecord(): void
+    {
+        $queue = [
+            new Response(200, [], 'test'),
+            new Response(404, [], 'Not found'),
+        ];
+        $config = [RequestOptions::HTTP_ERRORS => false];
+
+        $test = new class () {
+            use RequestHistoryTestClientTrait;
+        };
+        $client = $test->createRequestHistoryTestHttpClient($queue, $config);
+        $client->request('GET', '/path/test');
+        $client->request('POST', '/path/not/found');
+
+        self::assertTrue($test->hasRequestHistory());
+        self::assertCount(2, $test->getRequestHistory());
+
+        $record = $test->pullRequestHistoryRecord();
+
+        self::assertCount(1, $test->getRequestHistory());
+        self::assertSame('GET', $record->getRequest()->getMethod());
+
+        $record = $test->pullRequestHistoryRecord();
+
+        self::assertFalse($test->hasRequestHistory());
+        self::assertSame('POST', $record->getRequest()->getMethod());
+        self::assertSame('Not found', $record->getResponse()->getBody()->getContents());
+    }
+
+    public function testPullRequestHistoryRecordWithEmptyPool(): void
+    {
+        $this->expectException(\OutOfBoundsException::class);
+        $this->expectExceptionMessage('Request history pool is empty');
+
+        $test = new class () {
+            use RequestHistoryTestClientTrait;
+        };
+        $test->createRequestHistoryTestHttpClient([]);
+
+        $test->pullRequestHistoryRecord();
     }
 }

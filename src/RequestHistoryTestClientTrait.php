@@ -31,9 +31,24 @@ trait RequestHistoryTestClientTrait
         return array_merge($config, ['handler' => $handlerStack]);
     }
 
+    /**
+     * @return History\Record[]
+     */
     public function getRequestHistory(): array
     {
-        return $this->requestHistory;
+        return array_map(static function (array $row) {
+            return new History\Record($row);
+        }, $this->requestHistory);
+    }
+
+    public function pullRequestHistoryRecord(): History\Record
+    {
+        $row = array_shift($this->requestHistory);
+        if ($row === null) {
+            throw new \OutOfBoundsException('Request history pool is empty');
+        }
+
+        return new History\Record($row);
     }
 
     public function hasRequestHistory(): bool
