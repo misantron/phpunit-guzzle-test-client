@@ -13,7 +13,7 @@ The recommended way to install is through [Composer](https://getcomposer.org/).
 composer require misantron/phpunit-guzzle-test-client
 ```
 
-## Supported version
+## Supported versions
 
 - PHP >= 7.2
 - PHPUnit framework - 8 / 9
