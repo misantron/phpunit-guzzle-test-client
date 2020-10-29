@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "guzzlehttp/guzzle": "^6.5|^7.1"
+        "guzzlehttp/guzzle": "^6.5|^7.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
