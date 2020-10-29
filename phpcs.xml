@@ -13,4 +13,5 @@
 
     <file>src/</file>
     <file>tests/</file>
+    <file>examples/</file>
 </ruleset>
