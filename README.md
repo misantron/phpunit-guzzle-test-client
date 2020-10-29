@@ -13,6 +13,12 @@ The recommended way to install is through [Composer](https://getcomposer.org/).
 composer require misantron/phpunit-guzzle-test-client
 ```
 
+## Supported version
+
+- PHP >= 7.2
+- PHPUnit framework - 8 / 9
+- Guzzle http client - 6 / 7
+
 ## Usage
 
 To understand how to use helpers in your tests you can view [example tests](/examples).
