@@ -9,7 +9,9 @@ Collection of PHPUnit test helper traits useful for testing services using [Guzz
 
 The recommended way to install is through [Composer](https://getcomposer.org/).
 
-`composer require misantron/phpunit-guzzle-test-client`
+```bash
+composer require misantron/phpunit-guzzle-test-client
+```
 
 ## Usage
 
