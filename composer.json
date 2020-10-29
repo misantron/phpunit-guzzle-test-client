@@ -18,7 +18,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PHPUnit\\Guzzle\\TestClient\\Tests\\": "tests"
+            "PHPUnit\\Guzzle\\TestClient\\Tests\\": "tests",
+            "PHPUnit\\Guzzle\\TestClient\\Example\\": "examples"
         }
     },
     "config": {

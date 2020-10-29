@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: composer install --no-suggest --no-scripts
+        run: composer install --no-scripts
       - name: PHP Code Style run
         run: vendor/bin/phpcs --standard=phpcs.xml
   tests:
@@ -28,7 +28,7 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
       - name: Install dependencies
-        run: composer install --no-suggest --no-scripts
+        run: composer install --no-scripts
       - name: PHPUnit run
         run: vendor/bin/phpunit --colors=always
   coverage:
@@ -43,7 +43,7 @@ jobs:
           php-version: '7.4'
           coverage: pcov
       - name: Install dependencies
-        run: composer install --no-suggest --no-scripts
+        run: composer install --no-scripts
       - name: PHPUnit run with coverage
         run: vendor/bin/phpunit --colors=always --coverage-clover=coverage.xml
       - name: Upload coverage report
