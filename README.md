@@ -1,9 +1,11 @@
 # Guzzle test client helpers for PHPUnit
 
-[![Build Status](https://github.com/misantron/phpunit-guzzle-test-client/workflows/build/badge.svg)](https://github.com/misantron/phpunit-guzzle-test-client/actions)
-[![Code Coverage](https://codecov.io/gh/misantron/phpunit-guzzle-test-client/branch/main/graph/badge.svg)](https://codecov.io/gh/misantron/phpunit-guzzle-test-client)
+[![Build Status](https://img.shields.io/github/workflow/status/misantron/phpunit-guzzle-test-client/build.svg?style=flat-square)](https://github.com/misantron/phpunit-guzzle-test-client/actions)
+[![Code Coverage](https://img.shields.io/codecov/c/gh/misantron/phpunit-guzzle-test-client.svg?style=flat-square)](https://codecov.io/gh/misantron/phpunit-guzzle-test-client)
+[![PHP Version](https://img.shields.io/packagist/php-v/misantron/phpunit-guzzle-test-client.svg?style=flat-square)](https://github.com/misantron/phpunit-guzzle-test-client)
+[![Packagist](https://img.shields.io/packagist/v/misantron/phpunit-guzzle-test-client.svg?style=flat-square)](https://packagist.org/packages/misantron/phpunit-guzzle-test-client)
 
-Collection of PHPUnit test helper traits useful for testing services using [Guzzle](https://github.com/guzzle/guzzle) http client as dependency.
+Collection of [PHPUnit](https://phpunit.de/) test helper traits created for testing services using [Guzzle](https://github.com/guzzle/guzzle) http client.
 
 ## Installation
 
@@ -15,9 +17,8 @@ composer require misantron/phpunit-guzzle-test-client
 
 ## Supported versions
 
-- PHP >= 7.2
-- PHPUnit framework - 8 / 9
-- Guzzle http client - 6 / 7
+* [PHPUnit](https://phpunit.de/) test framework - 8 / 9
+* [Guzzle](https://github.com/guzzle/guzzle) http client - 6 / 7
 
 ## Usage
 
