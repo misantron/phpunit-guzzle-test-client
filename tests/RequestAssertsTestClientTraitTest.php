@@ -21,7 +21,7 @@ class RequestAssertsTestClientTraitTest extends TestCase
      *
      * @dataProvider clientConfigDataProvider
      */
-    public function testCreateTestHttpClientConfig(
+    public function testCreateRequestAssertsTestHttpClientConfig(
         array $queue,
         callable $assertsCallback,
         array $config,
@@ -30,7 +30,7 @@ class RequestAssertsTestClientTraitTest extends TestCase
         $test = new class () {
             use RequestAssertsTestClientTrait;
         };
-        $actual = $test->createTestHttpClientConfig($queue, $assertsCallback, $config);
+        $actual = $test->createRequestAssertsTestHttpClientConfig($queue, $assertsCallback, $config);
 
         $assertion($actual);
     }

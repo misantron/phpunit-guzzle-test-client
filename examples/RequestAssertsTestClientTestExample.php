@@ -47,7 +47,7 @@ class RequestAssertsTestClientTestExample extends TestCase
 
             return $request;
         };
-        $config = $this->createTestHttpClientConfig($queue, $assertsCallback);
+        $config = $this->createRequestAssertsTestHttpClientConfig($queue, $assertsCallback);
 
         $service = new ServiceExample(
             new Client($config)

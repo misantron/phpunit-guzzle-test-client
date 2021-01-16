@@ -17,11 +17,14 @@ trait RequestAssertsTestClientTrait
         callable $assertsCallback,
         array $config = []
     ): ClientInterface {
-        return new Client($this->createTestHttpClientConfig($queue, $assertsCallback, $config));
+        return new Client($this->createRequestAssertsTestHttpClientConfig($queue, $assertsCallback, $config));
     }
 
-    public function createTestHttpClientConfig(array $queue, callable $assertsCallback, array $config = []): array
-    {
+    public function createRequestAssertsTestHttpClientConfig(
+        array $queue,
+        callable $assertsCallback,
+        array $config = []
+    ): array {
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);
 

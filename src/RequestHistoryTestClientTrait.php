@@ -16,10 +16,10 @@ trait RequestHistoryTestClientTrait
 
     public function createRequestHistoryTestHttpClient(array $queue, array $config = []): ClientInterface
     {
-        return new Client($this->createTestHttpClientConfig($queue, $config));
+        return new Client($this->createRequestHistoryTestHttpClientConfig($queue, $config));
     }
 
-    public function createTestHttpClientConfig(array $queue, array $config = []): array
+    public function createRequestHistoryTestHttpClientConfig(array $queue, array $config = []): array
     {
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);

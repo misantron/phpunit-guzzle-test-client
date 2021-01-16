@@ -19,12 +19,12 @@ class RequestHistoryTestClientTraitTest extends TestCase
      *
      * @dataProvider clientConfigDataProvider
      */
-    public function testCreateTestHttpClientConfig(array $queue, array $config, callable $assertion): void
+    public function testCreateRequestHistoryTestHttpClientConfig(array $queue, array $config, callable $assertion): void
     {
         $test = new class () {
             use RequestHistoryTestClientTrait;
         };
-        $actual = $test->createTestHttpClientConfig($queue, $config);
+        $actual = $test->createRequestHistoryTestHttpClientConfig($queue, $config);
 
         $assertion($actual);
     }

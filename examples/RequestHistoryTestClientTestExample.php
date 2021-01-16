@@ -41,7 +41,7 @@ class RequestHistoryTestClientTestExample extends TestCase
         $queue = [
             new Response(200, [], '{"ok":true}'),
         ];
-        $config = $this->createTestHttpClientConfig($queue);
+        $config = $this->createRequestHistoryTestHttpClientConfig($queue);
 
         $service = new ServiceExample(
             new Client($config)

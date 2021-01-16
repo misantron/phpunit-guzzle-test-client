@@ -26,4 +26,4 @@ To understand how to use helpers in your tests you can view [example tests](/exa
 ## License
 
 [The MIT License (MIT)](LICENSE)  
-Copyright © 2020 Aleksandr Ivanov
+Copyright © 2020-2021 Aleksandr Ivanov
