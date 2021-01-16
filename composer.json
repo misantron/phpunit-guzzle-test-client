@@ -1,31 +1,35 @@
 {
-    "name": "misantron/phpunit-guzzle-test-client",
-    "description": "Guzzle http test client helpers for PHPUnit",
-    "type": "library",
-    "license": "MIT",
-    "require": {
-        "php": ">=7.2",
-        "guzzlehttp/guzzle": "^6.5|^7.0"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.5",
-        "phpunit/phpunit": "^8.5|^9.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "PHPUnit\\Guzzle\\TestClient\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "PHPUnit\\Guzzle\\TestClient\\Tests\\": "tests",
-            "PHPUnit\\Guzzle\\TestClient\\Example\\": "examples"
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "scripts": {
-        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml"
+  "name": "misantron/phpunit-guzzle-test-client",
+  "description": "Guzzle http test client helpers for PHPUnit",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aleksandr Ivanov",
+      "email": "misantron@gmail.com",
+      "role": "developer"
     }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "guzzlehttp/guzzle": "^6.5|^7.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5",
+    "phpunit/phpunit": "^8.5|^9.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "PHPUnit\\Guzzle\\TestClient\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PHPUnit\\Guzzle\\TestClient\\Tests\\": "tests",
+      "PHPUnit\\Guzzle\\TestClient\\Example\\": "examples"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
 }
