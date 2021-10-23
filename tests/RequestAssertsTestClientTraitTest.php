@@ -14,11 +14,6 @@ use PHPUnit\Guzzle\TestClient\RequestAssertsTestClientTrait;
 class RequestAssertsTestClientTraitTest extends TestCase
 {
     /**
-     * @param array $queue
-     * @param callable $assertsCallback
-     * @param array $config
-     * @param callable $assertion
-     *
      * @dataProvider clientConfigDataProvider
      */
     public function testCreateRequestAssertsTestHttpClientConfig(
@@ -27,7 +22,7 @@ class RequestAssertsTestClientTraitTest extends TestCase
         array $config,
         callable $assertion
     ): void {
-        $test = new class () {
+        $test = new class() {
             use RequestAssertsTestClientTrait;
         };
         $actual = $test->createRequestAssertsTestHttpClientConfig($queue, $assertsCallback, $config);
@@ -96,7 +91,7 @@ class RequestAssertsTestClientTraitTest extends TestCase
         };
         $config = ['base_uri' => 'https://example.com'];
 
-        $test = new class () {
+        $test = new class() {
             use RequestAssertsTestClientTrait;
         };
         $client = $test->createRequestAssertsTestHttpClient($queue, $assertsCallback, $config);

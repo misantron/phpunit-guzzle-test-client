@@ -10,11 +10,22 @@ use GuzzleHttp\Psr7\Response;
 final class Record
 {
     private $request;
+
     private $response;
 
     public function __construct(array $data)
     {
         $this->bindData($data);
+    }
+
+    public function getRequest(): Request
+    {
+        return $this->request;
+    }
+
+    public function getResponse(): Response
+    {
+        return $this->response;
     }
 
     private function bindData(array $data): void
@@ -31,15 +42,5 @@ final class Record
         if ($this->response === null) {
             throw new \InvalidArgumentException('Record does not contain response data');
         }
-    }
-
-    public function getRequest(): Request
-    {
-        return $this->request;
-    }
-
-    public function getResponse(): Response
-    {
-        return $this->response;
     }
 }

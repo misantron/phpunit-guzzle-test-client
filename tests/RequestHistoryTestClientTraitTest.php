@@ -13,15 +13,11 @@ use PHPUnit\Guzzle\TestClient\RequestHistoryTestClientTrait;
 class RequestHistoryTestClientTraitTest extends TestCase
 {
     /**
-     * @param array $queue
-     * @param array $config
-     * @param callable $assertion
-     *
      * @dataProvider clientConfigDataProvider
      */
     public function testCreateRequestHistoryTestHttpClientConfig(array $queue, array $config, callable $assertion): void
     {
-        $test = new class () {
+        $test = new class() {
             use RequestHistoryTestClientTrait;
         };
         $actual = $test->createRequestHistoryTestHttpClientConfig($queue, $config);
@@ -73,7 +69,7 @@ class RequestHistoryTestClientTraitTest extends TestCase
             new Response(200, [], 'test'),
         ];
 
-        $test = new class () {
+        $test = new class() {
             use RequestHistoryTestClientTrait;
         };
         $client = $test->createRequestHistoryTestHttpClient($queue);
@@ -98,7 +94,7 @@ class RequestHistoryTestClientTraitTest extends TestCase
         ];
         $config = [RequestOptions::HTTP_ERRORS => false];
 
-        $test = new class () {
+        $test = new class() {
             use RequestHistoryTestClientTrait;
         };
         $client = $test->createRequestHistoryTestHttpClient($queue, $config);
@@ -125,7 +121,7 @@ class RequestHistoryTestClientTraitTest extends TestCase
         $this->expectException(\OutOfBoundsException::class);
         $this->expectExceptionMessage('Request history pool is empty');
 
-        $test = new class () {
+        $test = new class() {
             use RequestHistoryTestClientTrait;
         };
         $test->createRequestHistoryTestHttpClient([]);

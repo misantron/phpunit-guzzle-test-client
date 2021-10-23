@@ -21,13 +21,13 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist
       - name: Run PHP Code Style check
-        run: vendor/bin/phpcs --standard=phpcs.xml
+        run: vendor/bin/ecs check
   tests:
     name: Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: [ '7.2', '7.3', '7.4', '8.0' ]
+        php-versions: [ '7.2', '7.3', '7.4', '8.0', '8.1' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
