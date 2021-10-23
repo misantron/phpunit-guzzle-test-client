@@ -12,15 +12,11 @@ use PHPUnit\Guzzle\TestClient\TestClientTrait;
 class TestClientTraitTest extends TestCase
 {
     /**
-     * @param array $queue
-     * @param array $config
-     * @param callable $assertion
-     *
      * @dataProvider clientConfigDataProvider
      */
     public function testCreateTestHttpClientConfig(array $queue, array $config, callable $assertion): void
     {
-        $test = new class () {
+        $test = new class() {
             use TestClientTrait;
         };
         $actual = $test->createTestHttpClientConfig($queue, $config);
@@ -72,7 +68,7 @@ class TestClientTraitTest extends TestCase
             new Response(200, [], 'test'),
         ];
 
-        $test = new class () {
+        $test = new class() {
             use TestClientTrait;
         };
         $client = $test->createTestHttpClient($queue);

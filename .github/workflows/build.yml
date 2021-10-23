@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist
       - name: Run PHP Code Style check
-        run: vendor/bin/phpcs --standard=phpcs.xml
+        run: vendor/bin/ecs check
   tests:
     name: Tests
     runs-on: ubuntu-latest
