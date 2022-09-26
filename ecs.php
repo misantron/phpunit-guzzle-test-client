@@ -17,14 +17,15 @@ use PhpCsFixer\Fixer\PhpUnit\PhpUnitMockShortWillReturnFixer;
 use PhpCsFixer\Fixer\PhpUnit\PhpUnitTestCaseStaticMethodCallsFixer;
 use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\StringNotation\ExplicitStringVariableFixer;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\CodingStandard\Fixer\ArrayNotation\ArrayListItemNewlineFixer;
 use Symplify\CodingStandard\Fixer\ArrayNotation\ArrayOpenerAndCloserNewlineFixer;
-use Symplify\EasyCodingStandard\ValueObject\Option;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $services = $containerConfigurator->services();
+return static function (ECSConfig $ecsConfig): void {
+    $ecsConfig->parallel();
+
+    $services = $ecsConfig->services();
     $services->set(ClassAttributesSeparationFixer::class)
         ->call('configure',
             [
@@ -62,13 +63,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ]
         );
 
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [
+    $ecsConfig->paths([
         __DIR__ . '/examples',
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ]);
-    $parameters->set(Option::SKIP, [
+
+    $ecsConfig->skip([
         ArrayOpenerAndCloserNewlineFixer::class => null,
         ArrayListItemNewlineFixer::class => null,
         NotOperatorWithSuccessorSpaceFixer::class,
@@ -78,10 +79,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         NoUnusedImportsFixer::class => null,
     ]);
 
-    $containerConfigurator->import(SetList::SYMFONY);
-    $containerConfigurator->import(SetList::SYMFONY_RISKY);
-    $containerConfigurator->import(SetList::ARRAY);
-    $containerConfigurator->import(SetList::CONTROL_STRUCTURES);
-    $containerConfigurator->import(SetList::SPACES);
-    $containerConfigurator->import(SetList::PSR_12);
+    $ecsConfig->sets([
+        SetList::ARRAY,
+        SetList::CONTROL_STRUCTURES,
+        SetList::SPACES,
+        SetList::CLEAN_CODE,
+        SetList::STRICT,
+        SetList::PSR_12,
+    ]);
 };
