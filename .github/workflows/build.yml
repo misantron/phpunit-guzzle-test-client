@@ -18,7 +18,7 @@ jobs:
         uses: ramsey/composer-install@v2
         with:
           dependency-versions: locked
-          composer-options: --no-ansi --no-interaction --no-progress
+          composer-options: --ansi --no-interaction --no-progress
       - name: Run ecs check
         run: vendor/bin/ecs check
   tests:
@@ -39,9 +39,9 @@ jobs:
         uses: ramsey/composer-install@v2
         with:
           dependency-versions: locked
-          composer-options: --no-ansi --no-interaction --no-progress
+          composer-options: --ansi --no-interaction --no-progress
       - name: Run tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --colors=always
   coverage:
     name: Tests coverage
     runs-on: ubuntu-latest
@@ -57,12 +57,11 @@ jobs:
         uses: ramsey/composer-install@v2
         with:
           dependency-versions: locked
-          composer-options: --no-ansi --no-interaction --no-progress
+          composer-options: --ansi --no-interaction --no-progress
       - name: Run tests with coverage
-        run: vendor/bin/phpunit --coverage-clover=clover.xml
+        run: vendor/bin/phpunit --colors=always --coverage-clover=clover.xml
       - name: Upload coverage
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: clover.xml
-          verbose: true
