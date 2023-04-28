@@ -24,7 +24,7 @@ class TestClientTraitTest extends TestCase
         $assertion($actual);
     }
 
-    public function clientConfigDataProvider(): array
+    public static function clientConfigDataProvider(): array
     {
         return [
             '#1' => [
