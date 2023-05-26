@@ -28,7 +28,9 @@ trait RequestHistoryTestClientTrait
         $requestHistoryMiddleware = Middleware::history($this->requestHistory);
         $handlerStack->push($requestHistoryMiddleware);
 
-        return array_merge($config, ['handler' => $handlerStack]);
+        return array_merge($config, [
+            'handler' => $handlerStack,
+        ]);
     }
 
     /**

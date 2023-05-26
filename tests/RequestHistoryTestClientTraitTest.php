@@ -40,7 +40,9 @@ class RequestHistoryTestClientTraitTest extends TestCase
             ],
             '#2' => [
                 [],
-                ['base_uri' => 'https://example.com'],
+                [
+                    'base_uri' => 'https://example.com',
+                ],
                 function (array $actual) {
                     self::assertArrayHasKey('base_uri', $actual);
                     self::assertSame('https://example.com', $actual['base_uri']);
@@ -52,7 +54,9 @@ class RequestHistoryTestClientTraitTest extends TestCase
                 [
                     new Response(),
                 ],
-                ['base_uri' => 'https://example.com'],
+                [
+                    'base_uri' => 'https://example.com',
+                ],
                 function (array $actual) {
                     self::assertArrayHasKey('base_uri', $actual);
                     self::assertSame('https://example.com', $actual['base_uri']);
@@ -92,7 +96,9 @@ class RequestHistoryTestClientTraitTest extends TestCase
             new Response(200, [], 'test'),
             new Response(404, [], 'Not found'),
         ];
-        $config = [RequestOptions::HTTP_ERRORS => false];
+        $config = [
+            RequestOptions::HTTP_ERRORS => false,
+        ];
 
         $test = new class() {
             use RequestHistoryTestClientTrait;

@@ -49,7 +49,9 @@ class RequestAssertsTestClientTraitTest extends TestCase
                 [],
                 static function () {
                 },
-                ['base_uri' => 'https://example.com'],
+                [
+                    'base_uri' => 'https://example.com',
+                ],
                 function (array $actual) {
                     self::assertArrayHasKey('base_uri', $actual);
                     self::assertSame('https://example.com', $actual['base_uri']);
@@ -66,7 +68,9 @@ class RequestAssertsTestClientTraitTest extends TestCase
 
                     return $request;
                 },
-                ['base_uri' => 'https://example.com'],
+                [
+                    'base_uri' => 'https://example.com',
+                ],
                 function (array $actual) {
                     self::assertArrayHasKey('base_uri', $actual);
                     self::assertSame('https://example.com', $actual['base_uri']);
@@ -89,14 +93,18 @@ class RequestAssertsTestClientTraitTest extends TestCase
 
             return $request;
         };
-        $config = ['base_uri' => 'https://example.com'];
+        $config = [
+            'base_uri' => 'https://example.com',
+        ];
 
         $test = new class() {
             use RequestAssertsTestClientTrait;
         };
         $client = $test->createRequestAssertsTestHttpClient($queue, $assertsCallback, $config);
         $response = $client->request('GET', '/path', [
-            RequestOptions::HEADERS => ['Content-Type' => 'text/plain'],
+            RequestOptions::HEADERS => [
+                'Content-Type' => 'text/plain',
+            ],
         ]);
 
         self::assertSame(200, $response->getStatusCode());

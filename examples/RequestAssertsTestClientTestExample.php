@@ -52,7 +52,9 @@ class RequestAssertsTestClientTestExample extends TestCase
         $service = new ServiceExample(
             new Client($config)
         );
-        $result = $service->methodTwo(['foo' => 'bar']);
+        $result = $service->methodTwo([
+            'foo' => 'bar',
+        ]);
 
         self::assertSame(200, $result->getStatusCode());
         self::assertSame('{"ok":true}', $result->getBody()->getContents());

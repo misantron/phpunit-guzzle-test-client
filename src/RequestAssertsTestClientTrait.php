@@ -31,6 +31,8 @@ trait RequestAssertsTestClientTrait
         $requestMapperMiddleware = Middleware::mapRequest($assertsCallback);
         $handlerStack->push($requestMapperMiddleware);
 
-        return array_merge($config, ['handler' => $handlerStack]);
+        return array_merge($config, [
+            'handler' => $handlerStack,
+        ]);
     }
 }

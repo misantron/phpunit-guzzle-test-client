@@ -12,7 +12,7 @@ Collection of [PHPUnit](https://phpunit.de/) test helper traits created for test
 The recommended way to install is through [Composer](https://getcomposer.org/).
 
 ```bash
-composer require misantron/phpunit-guzzle-test-client
+composer require --dev misantron/phpunit-guzzle-test-client
 ```
 
 ## Supported versions

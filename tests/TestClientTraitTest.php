@@ -39,7 +39,9 @@ class TestClientTraitTest extends TestCase
             ],
             '#2' => [
                 [],
-                ['base_uri' => 'https://example.com'],
+                [
+                    'base_uri' => 'https://example.com',
+                ],
                 function (array $actual) {
                     self::assertArrayHasKey('base_uri', $actual);
                     self::assertSame('https://example.com', $actual['base_uri']);
@@ -51,7 +53,9 @@ class TestClientTraitTest extends TestCase
                 [
                     new Response(),
                 ],
-                ['base_uri' => 'https://example.com'],
+                [
+                    'base_uri' => 'https://example.com',
+                ],
                 function (array $actual) {
                     self::assertArrayHasKey('base_uri', $actual);
                     self::assertSame('https://example.com', $actual['base_uri']);

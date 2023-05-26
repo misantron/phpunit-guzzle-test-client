@@ -21,6 +21,8 @@ trait TestClientTrait
         $mockHandler = new MockHandler($queue);
         $handlerStack = HandlerStack::create($mockHandler);
 
-        return array_merge($config, ['handler' => $handlerStack]);
+        return array_merge($config, [
+            'handler' => $handlerStack,
+        ]);
     }
 }
